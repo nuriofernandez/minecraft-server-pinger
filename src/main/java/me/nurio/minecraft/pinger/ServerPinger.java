@@ -1,0 +1,16 @@
+package me.nurio.minecraft.pinger;
+
+import lombok.SneakyThrows;
+
+import java.net.InetSocketAddress;
+
+public class ServerPinger {
+
+    @SneakyThrows
+    public static StatusResponse ping(String serverAddress) {
+        InetSocketAddress address = SRVResolver.getSocketAddress(serverAddress);
+        ServerPing server = new ServerPing(address);
+        return server.fetchData();
+    }
+
+}
