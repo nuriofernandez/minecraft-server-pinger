@@ -10,6 +10,7 @@ public class StatusResponse {
     @Getter private Version version;
     @Getter private String favicon;
 
+    @Getter @Setter private String json;
     @Getter @Setter private int time;
 
 }

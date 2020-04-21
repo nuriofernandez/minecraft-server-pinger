@@ -62,8 +62,6 @@ public class ServerPing {
         dataInputStream.readFully(in);
         String json = new String(in);
 
-        System.out.println(json); // This works
-
         long now = System.currentTimeMillis();
         dataOutputStream.writeByte(9);
         dataOutputStream.writeByte(1);
@@ -76,8 +74,9 @@ public class ServerPing {
 
         long pingtime = dataInputStream.readLong();
 
-        StatusResponse response = (StatusResponse) this.gson.fromJson(json, StatusResponse.class); // This doesn't work.
-        response.setTime((int) (now - pingtime));
+        StatusResponse response = new StatusResponse();
+        response.setTime((int) (now - pingtime)); // Always zero
+        response.setJson(json);
 
         dataOutputStream.close();
         outputStream.close();
