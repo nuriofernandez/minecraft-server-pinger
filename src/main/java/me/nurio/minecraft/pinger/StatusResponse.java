@@ -11,6 +11,6 @@ public class StatusResponse {
     @Getter private String favicon;
 
     @Getter @Setter private String json;
-    @Getter @Setter private int time;
+    @Getter @Setter private long time;
 
 }
