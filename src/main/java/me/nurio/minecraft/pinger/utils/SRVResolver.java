@@ -1,4 +1,4 @@
-package me.nurio.minecraft.pinger;
+package me.nurio.minecraft.pinger.utils;
 
 import lombok.SneakyThrows;
 import org.xbill.DNS.Lookup;

@@ -1,4 +1,4 @@
-package me.nurio.minecraft.pinger;
+package me.nurio.minecraft.pinger.beans;
 
 import lombok.Getter;
 
