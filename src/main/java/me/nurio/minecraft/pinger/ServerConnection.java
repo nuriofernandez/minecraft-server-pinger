@@ -1,5 +1,7 @@
 package me.nurio.minecraft.pinger;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,6 +19,12 @@ import java.net.SocketTimeoutException;
  */
 @RequiredArgsConstructor
 public class ServerConnection {
+
+    private ObjectMapper mapper = new ObjectMapper(){
+        {
+            disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        }
+    };
 
     @NonNull private InetSocketAddress address;
     @Setter private int timeout = 1000;
@@ -89,9 +97,8 @@ public class ServerConnection {
 
         disconnect();
 
-        StatusResponse response = new StatusResponse();
-        response.setTime(time); // Always zero
-        response.setJson(json);
+        StatusResponse response = mapper.readValue(json, StatusResponse.class);
+        response.setTime(time);
 
         return response;
     }
