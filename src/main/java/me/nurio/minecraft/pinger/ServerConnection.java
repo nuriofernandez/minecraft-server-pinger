@@ -3,6 +3,7 @@ package me.nurio.minecraft.pinger;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import me.nurio.minecraft.pinger.beans.StatusResponse;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -15,7 +16,7 @@ import java.net.SocketTimeoutException;
  * https://wiki.vg/Server_List_Ping#Handshake
  */
 @RequiredArgsConstructor
-public class ServerPing {
+public class ServerConnection {
 
     @NonNull private InetSocketAddress address;
     @Setter private int timeout = 1000;

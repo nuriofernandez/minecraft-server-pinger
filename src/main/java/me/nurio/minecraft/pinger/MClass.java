@@ -1,5 +1,7 @@
 package me.nurio.minecraft.pinger;
 
+import me.nurio.minecraft.pinger.beans.StatusResponse;
+
 import java.io.IOException;
 
 public class MClass {
