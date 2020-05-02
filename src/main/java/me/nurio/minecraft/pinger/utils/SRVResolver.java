@@ -12,7 +12,7 @@ public class SRVResolver {
 
     @SneakyThrows
     public static InetSocketAddress getSocketAddress(String domain) {
-        return getSocketAddress(domain, 25565);
+        return getSocketAddress(getHost(domain), getPort(domain));
     }
 
     @SneakyThrows
@@ -24,6 +24,16 @@ public class SRVResolver {
             return new InetSocketAddress(hostname, srv.getPort());
         }
         return new InetSocketAddress(domain, port);
+    }
+
+    private static String getHost(String serverAddress) {
+        if (!serverAddress.contains(":")) return serverAddress;
+        return serverAddress.split(":")[0];
+    }
+
+    private static int getPort(String serverAddress) {
+        if (!serverAddress.contains(":")) return 25565;
+        return Integer.parseInt(serverAddress.split(":")[1]);
     }
 
 }
