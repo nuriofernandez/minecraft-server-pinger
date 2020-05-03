@@ -5,22 +5,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import me.nurio.minecraft.pinger.beans.StatusResponse;
+import me.nurio.minecraft.pinger.beans.MinecraftServerStatus;
+import me.nurio.minecraft.pinger.beans.OnlineMinecraftServerStatus;
 
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
 
 /**
  * This class manages Minecraft server list handshake.
  * https://wiki.vg/Server_List_Ping#Handshake
  */
 @RequiredArgsConstructor
-public class ServerConnection {
+public class MinecraftServerConnection {
 
-    private ObjectMapper mapper = new ObjectMapper(){
+    private ObjectMapper mapper = new ObjectMapper() {
         {
             disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         }
@@ -88,7 +87,7 @@ public class ServerConnection {
         return new String(in);
     }
 
-    public StatusResponse fetchData() throws IOException, SocketException, SocketTimeoutException {
+    public MinecraftServerStatus fetchData() throws IOException {
         connect();
 
         long start = System.currentTimeMillis();
@@ -97,8 +96,8 @@ public class ServerConnection {
 
         disconnect();
 
-        StatusResponse response = mapper.readValue(json, StatusResponse.class);
-        response.setTime(time);
+        OnlineMinecraftServerStatus response = mapper.readValue(json, OnlineMinecraftServerStatus.class);
+        response.setPing(time);
 
         return response;
     }
