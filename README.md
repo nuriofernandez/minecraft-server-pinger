@@ -1,6 +1,24 @@
 # Minecraft Server Pinger
 Minecraft server pinger library obtains information such as the MOTD of minecraft servers.
 
+# Maven dependency
+
+```xml
+<repository>
+    <id>nurio-repo</id>
+    <url>https://nurio.me/repo/mvn/</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>me.nurio.minecraft</groupId>
+    <artifactId>pinger</artifactId>
+    <version>0.0.1</version>
+    <scope>compile</scope>
+</dependency>
+```
+
 # How to use the server pinger
 
 The `MinecraftServerPinger` class it's very easy to use, it will manage everything for you, SRV domain resolve, offline check, getting server's data, connection timeout management...
