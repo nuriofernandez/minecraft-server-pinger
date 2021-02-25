@@ -8,6 +8,6 @@ import lombok.ToString;
 public class Version {
 
     private String name;
-    private String protocol;
+    private Integer protocol;
 
 }
