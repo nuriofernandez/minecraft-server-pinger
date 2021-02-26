@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nurio.minecraft</groupId>
     <artifactId>pinger</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>Minecraft server pinger</name>
     <description>Minecraft server pinger obtains information such as the MOTD of minecraft servers.</description>
 
