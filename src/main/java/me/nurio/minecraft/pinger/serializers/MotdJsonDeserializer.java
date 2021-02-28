@@ -34,7 +34,9 @@ public class MotdJsonDeserializer extends RawJsonDeserializer {
     }
 
     private String removeIllegalCharacters(String text) {
-        return text.replaceAll("(Â§\\w)", "").replaceAll("\n", " ").trim();
+        return text.replaceAll("(((Â?)([Â,]?)(Ã?))?[§](\\w))", "")
+            .replaceAll("\n", " ")
+            .trim();
     }
 
 }
