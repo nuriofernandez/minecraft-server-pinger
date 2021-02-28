@@ -14,7 +14,7 @@ Minecraft server pinger library obtains information such as the MOTD of minecraf
 <dependency>
     <groupId>me.nurio.minecraft</groupId>
     <artifactId>pinger</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <scope>compile</scope>
 </dependency>
 ```
