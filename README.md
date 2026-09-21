@@ -59,7 +59,12 @@ InetSocketAddress socketAddress = new InetSocketAddress("serveradress.com", 2556
 
 MinecraftServerConnection connection = new MinecraftServerConnection(socketAddress);
 connection.setTimeout(5000); // Optional timeout (default was 1000ms)
-MinecraftServerStatus server = connection.fetchData();
+MinecraftServerStatus server;
+try {
+    server = connection.fetchData();
+} catch (Exception e) {
+    server = new OfflineMinecraftServerStatus(e);
+}
 
 // Here you can continue as the first example. (isOffline(), getMotd()...)
 ```
